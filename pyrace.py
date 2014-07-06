@@ -91,6 +91,36 @@ class Topbar():
     else:
       self.offset = self.surface.get_rect().width  
 
+class Console():
+  def __init__(self, xpos, ypos, width, height, color, bg_color, font_size, text, velocity):
+    self.xpos = xpos
+    self.ypos = ypos
+    self.width = width
+    self.height = height
+    self.color = color
+    self.bg_color = bg_color
+    self.font_size = font_size
+    self.text = text
+    self.velocity = velocity
+    self.offset = 20
+    
+    # set up font
+    self.basicFont = pygame.font.SysFont(None, self.font_size)
+    # set up a surface 
+    self.surface = pygame.Surface((self.width, self.height))
+  
+  def update(self, delta):
+    # black everything out
+    self.surface.fill(self.bg_color)
+    # draw the text onto the topbar
+    text = self.basicFont.render(self.text, True, self.color, self.bg_color)
+    textRect = text.get_rect()
+    # calculate the padding
+    text_padding = int((self.height - textRect.height) / 2) 
+    textRect.topleft = (self.offset, text_padding) 
+    # draw the text onto the surface
+    self.surface.blit(text, textRect)
+
 class World():
   def __init__(self):
     # Rock some tunes, yo!
@@ -126,7 +156,7 @@ class World():
     self.yellow_stripes = YellowStripes(0, yellow_stripe_top, self.width, stripe_height, YELLOW, ASPHALT, stripe_height, stripe_length, stripe_length * 2, 400)
 
     # make the console
-    self.console = Topbar(0, int(self.height * 0.9), self.width, self.height/10, WHITE, BLACK, 48, 'This is the console...', 200)
+    self.console = Console(0, int(self.height * 0.9), self.width, self.height/10, WHITE, BLACK, 48, 'This is the console...', 200)
 
     # draw the sky layer onto the background surface
     self.background.fill(SKY) 
