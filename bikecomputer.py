@@ -9,7 +9,6 @@ class BikeComputer():
   MS_IN_A_SECOND = 1000.0000
   displayFormat = 'metric'
   displayInterval = 1000 # Update display every 1 second
-  boxUnit = 1.0 # How many mph/kph each box on the graph represents.  We start out at 1.0, and up it as your max velocity goes over 10
   clicks = 0
   tripBegin = 0
   lastClick = 0
@@ -33,7 +32,6 @@ class BikeComputer():
     
     self.index = 0
     self.displayVelocity = 0.0
-    self.boxtUnit = 1.0
     self.velocity = 0.0
     self.avgVelocity = 0.0
     self.maxVelocity = 0.0
@@ -53,11 +51,6 @@ class BikeComputer():
       # Velocity = hertz * wheel circumference, in mm/s
       self.velocity = (self.hertz * self.wheelCircumference)
       self.maxVelocity = max(self.velocity,self.maxVelocity)
-      # Adjust the bar graph to make the red bar barely attainable
-      if(self.displayFormat == 'metric'):
-        self.boxUnit = (self.maxVelocity / BikeComputer.MM_IN_A_KILOMETER * BikeComputer.SECONDS_IN_AN_HOUR) / 11
-      if(self.displayFormat == 'imperial'):
-        self.boxUnit = (self.maxVelocity / BikeComputer.MM_IN_A_MILE * BikeComputer.SECONDS_IN_AN_HOUR) / 11
       # Distance travelled = clicks * wheel circumference, in mm
       self.distance = self.clicks * self.wheelCircumference    
       # Update the last click
