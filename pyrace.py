@@ -136,7 +136,7 @@ class World():
     self.avg_v = 0
     self.worldx = 0
     self.stable_velocity = False
-    self.windowSurface = pygame.display.set_mode((VIEW_WIDTH,VIEW_HEIGHT), 0, 32) 
+    self.windowSurface = pygame.display.set_mode((VIEW_WIDTH,VIEW_HEIGHT), FULLSCREEN, 32) 
     self.background = pygame.Surface((VIEW_WIDTH, VIEW_HEIGHT))
     
     # We are going to need to calculate some heights and positions
