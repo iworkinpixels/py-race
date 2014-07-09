@@ -151,12 +151,12 @@ class World():
     yellow_stripe_top = int( (top_stripe_top + bottom_stripe_top) / 2)
     
     # make the topbar
-    self.topbar = Topbar(0, 0, self.width, self.height/10, WHITE, BLACK, 16, 'Nine Inch Nails - The Hand That Feeds', 200)
+    self.topbar = Topbar(0, 0, self.width, self.height/10, WHITE, BLACK, 16, 'Nine Inch Nails - The Hand That Feeds', 50)
     # make the yellow stripes
     self.yellow_stripes = YellowStripes(0, yellow_stripe_top, self.width, stripe_height, YELLOW, ASPHALT, stripe_height, stripe_length, stripe_length * 2, 400)
 
     # make the console
-    self.console = Console(0, int(self.height * 0.9), self.width, self.height/10, WHITE, BLACK, 16, 'This is the console...', 200)
+    self.console = Console(0, int(self.height * 0.9), self.width, self.height/10, WHITE, BLACK, 16, 'This is the console...', 0)
 
     # draw the sky layer onto the background surface
     self.background.fill(SKY) 
